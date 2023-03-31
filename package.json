@@ -1,7 +1,7 @@
 {
   "name": "todo-export-to-excel",
   "version": "1.0.0",
-  "description": "\nThis script generates images with code snippets for each TODO and FIXME comment in a given project and creates an Excel file with the generated images.",
+  "description": "Generates images with code snippets for each TODO and FIXME comment in a given project and creates an Excel file with the generated images.",
   "main": "index.js",
   "scripts": {
     "start": "node ./src/index.js"
@@ -11,6 +11,7 @@
   "dependencies": {
     "exceljs": "^4.3.0",
     "glob": "^9.3.2",
-    "playwright": "^1.32.1"
+    "playwright": "^1.32.1",
+    "simple-git": "^3.17.0"
   }
 }

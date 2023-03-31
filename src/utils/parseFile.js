@@ -3,6 +3,9 @@ const getLinesAround = require('./getLinesAround');
 const { getFileLanguage } = require('./fileExtension');
 const createImage = require('./createImage');
 const path = require('path');
+const getAuthorAndDateByLine = require('./getAuthorAndDateByLine');
+
+
 
 // Функция для парсинга файлов и извлечения информации о комментариях с TODO, FIXME
 // Function for parsing files and extracting information about TODO, FIXME comments
@@ -29,11 +32,14 @@ async function parseFile(filePath, content) {
                 await createImage(codeBlock, fileLanguage, imageName);
                 const absoluteImagePath = path.resolve(config.imagesFolder, imageName);
 
+                const authorAndDate = await getAuthorAndDateByLine(filePath, lineNumber);
                 todoFixmeLines.push({
                     filename: filePath,
                     lineNumber: lineNumber,
                     text: commentText,
                     image: absoluteImagePath,
+                    author: authorAndDate?.author,
+                    date: authorAndDate?.date
                 });
             } catch (error) {
                 // Ошибка при создании изображения

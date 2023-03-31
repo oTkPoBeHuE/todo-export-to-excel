@@ -33,20 +33,24 @@ async function findTodoFixme() {
     const worksheet = workbook.addWorksheet('TODO_FIXME');
     worksheet.columns = [
         { header: 'Image', key: 'image', width: 90 },
+        { header: 'Author', key: 'author', width: 15 },
+        { header: 'Date', key: 'date', width: 15 },
         { header: 'File Name', key: 'filename', width: 100 },
         { header: 'Line Number', key: 'lineNumber', width: 10 },
         { header: 'Text', key: 'text', width: 30 },
     ];
 
-    // Set word wrap for the 4th column
-    // Установка переноса слов для 4-й колонки
-    worksheet.getColumn(4).alignment = { wrapText: true };
+    // Set word wrap for the 6th column
+    // Установка переноса слов для 6-й колонки
+    worksheet.getColumn(6).alignment = { wrapText: true };
 
     for (const item of todoFixmeExcel) {
         const row = worksheet.addRow({
             filename: item.filename,
             lineNumber: item.lineNumber,
             text: item.text,
+            author: item.author,
+            date: item.date,
         });
         // Set row height
         // Устанавливаем высоту строки
